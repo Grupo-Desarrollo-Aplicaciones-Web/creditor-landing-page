@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection.vue'
 import FeaturesSection from './components/FeaturesSection.vue'
 import HowItWorks from './components/HowItWorks.vue'
 import StatsBand from './components/StatsBand.vue'
+import LoanSimulator from './components/LoanSimulator.vue'
 </script>
 
 <template>
@@ -13,5 +14,6 @@ import StatsBand from './components/StatsBand.vue'
     <FeaturesSection />
     <HowItWorks />
     <StatsBand />
+    <LoanSimulator />
   </main>
 </template>
