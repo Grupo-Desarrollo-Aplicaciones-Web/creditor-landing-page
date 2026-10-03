@@ -204,7 +204,7 @@ onUnmounted(() => {
   border-radius: 2px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .burger {
     display: flex;
   }

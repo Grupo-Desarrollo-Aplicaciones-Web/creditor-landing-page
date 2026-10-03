@@ -1,5 +1,6 @@
 import { computed, ref } from 'vue'
 import { messages } from './messages.js'
+import { initialLocale } from './lib/locale.js'
 
 const STORAGE_KEY = 'creditor-locale'
 export const locales = [
@@ -7,15 +8,7 @@ export const locales = [
   { code: 'es-419', label: 'ES', name: 'Español latinoamericano' }
 ]
 const supported = (code) => locales.some((item) => item.code === code)
-const initialLocale = () => {
-  try {
-    const saved = window.localStorage.getItem(STORAGE_KEY)
-    return supported(saved) ? saved : 'en-US'
-  } catch {
-    return 'en-US'
-  }
-}
-const locale = ref(initialLocale())
+const locale = ref(initialLocale(() => window.localStorage.getItem(STORAGE_KEY)))
 const resolve = (dictionary, path) =>
   path.split('.').reduce((value, key) => value?.[key], dictionary)
 

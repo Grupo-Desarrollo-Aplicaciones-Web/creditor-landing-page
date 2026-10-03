@@ -3,7 +3,7 @@ export const messages = {
     nav: { features: 'Features', how: 'How it works', scope: 'This version', faq: 'Questions', login: 'Open application', openMenu: 'Open navigation', closeMenu: 'Close navigation', language: 'Choose language', skip: 'Skip to content', home: 'CREDITOR home' },
     hero: {
       eyebrow: 'Accounts payable for small businesses',
-      titleStart: 'Know what you owe. ', titleHighlight: 'Plan your next payment.', titleEnd: '',
+      titleStart: 'Know what you owe. ', titleHighlight: 'Plan your next payment.',
       text: 'CREDITOR brings supplier purchases, due dates and payment records into one workspace for your small business.',
       ctaPrimary: 'Review my obligations', ctaSecondary: 'Record a purchase',
       badges: ['Supplier purchases', 'Due dates', 'Payment history'],
@@ -103,7 +103,7 @@ export const messages = {
     nav: { features: 'Funciones', how: 'Cómo funciona', scope: 'Esta versión', faq: 'Preguntas', login: 'Abrir aplicación', openMenu: 'Abrir navegación', closeMenu: 'Cerrar navegación', language: 'Elegir idioma', skip: 'Ir al contenido', home: 'Inicio de CREDITOR' },
     hero: {
       eyebrow: 'Cuentas por pagar para mypes',
-      titleStart: 'Conoce tus obligaciones. ', titleHighlight: 'Organiza tu próximo pago.', titleEnd: '',
+      titleStart: 'Conoce tus obligaciones. ', titleHighlight: 'Organiza tu próximo pago.',
       text: 'CREDITOR reúne compras a proveedores, vencimientos y registros de abonos en un espacio de trabajo para tu mype.',
       ctaPrimary: 'Revisar mis obligaciones', ctaSecondary: 'Registrar una compra',
       badges: ['Compras a proveedores', 'Vencimientos', 'Historial de abonos'],
