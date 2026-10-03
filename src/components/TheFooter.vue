@@ -1,126 +1,44 @@
 <script setup>
-import { computed } from 'vue'
 import { useI18n } from '../i18n.js'
-
 const { t } = useI18n()
-
 const year = new Date().getFullYear()
-const columns = computed(() => t('footer.columns'))
 </script>
 
 <template>
   <footer class="footer">
     <div class="container footer__grid">
       <div>
-        <a class="brand" href="#inicio">
-          <span class="brand__mark">CF</span>
-          <span>CreditFlow</span>
-        </a>
-        <p class="footer__text">{{ t('footer.text') }}</p>
+        <a class="brand" href="#inicio"><span aria-hidden="true">C</span> CREDITOR</a>
+        <p>{{ t('footer.text') }}</p>
       </div>
-
-      <div v-for="column in columns" :key="column.title" class="footer__col">
-        <p class="footer__title">{{ column.title }}</p>
-        <ul>
-          <li v-for="link in column.links" :key="link"><a href="#">{{ link }}</a></li>
-        </ul>
-      </div>
+      <nav :aria-label="t('footer.product')">
+        <h2>{{ t('footer.product') }}</h2>
+        <a href="#caracteristicas">{{ t('footer.features') }}</a>
+        <a href="#scope">{{ t('footer.scope') }}</a>
+        <a href="#simulador">{{ t('footer.simulator') }}</a>
+      </nav>
+      <nav :aria-label="t('footer.legal')">
+        <h2>{{ t('footer.legal') }}</h2>
+        <a href="#/terms">{{ t('footer.terms') }}</a>
+        <a href="#/privacy">{{ t('footer.privacy') }}</a>
+      </nav>
     </div>
-
     <div class="container footer__bottom">
       <p>{{ t('footer.rights', { year }) }}</p>
-      <div class="footer__legal">
-        <a href="#">{{ t('footer.terms') }}</a>
-        <a href="#">{{ t('footer.privacy') }}</a>
-      </div>
+      <p>{{ t('footer.note') }}</p>
     </div>
   </footer>
 </template>
 
 <style scoped>
-.footer {
-  background: var(--bg);
-  color: rgba(238, 242, 255, 0.72);
-  padding: 64px 0 28px;
-}
-
-.footer__grid {
-  display: grid;
-  grid-template-columns: 1.4fr repeat(3, 1fr);
-  gap: 32px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
-  font-weight: 800;
-}
-
-.brand__mark {
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--brand), #7c3aed);
-  font-size: 0.8rem;
-}
-
-.footer__text {
-  margin-top: 14px;
-  max-width: 320px;
-  line-height: 1.6;
-  font-size: 0.92rem;
-}
-
-.footer__title {
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-}
-
-.footer__col ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 9px;
-  font-size: 0.92rem;
-}
-
-.footer__col a:hover {
-  color: #fff;
-}
-
-.footer__bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 44px;
-  padding-top: 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  font-size: 0.85rem;
-}
-
-.footer__legal {
-  display: flex;
-  gap: 18px;
-}
-
-@media (max-width: 860px) {
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 520px) {
-  .footer__grid {
-    grid-template-columns: 1fr;
-  }
-}
+.footer { background: var(--bg); color: var(--text-invert); padding: 56px 0 28px; }
+.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+.brand { font-weight: 800; font-size: 1.25rem; }
+.footer p { margin-top: 16px; max-width: 420px; line-height: 1.6; color: #cbd5e1; }
+.footer nav h2 { font-size: .95rem; margin-bottom: 14px; }
+.footer nav a { display: block; margin-top: 12px; width: fit-content; }
+.footer a:hover { text-decoration: underline; }
+.footer__bottom { margin-top: 32px; padding-top: 20px; border-top: 1px solid #334155; display: flex; gap: 32px; justify-content: space-between; }
+.footer__bottom p { margin: 0; font-size: .85rem; }
+@media (max-width: 720px) { .footer__grid { grid-template-columns: 1fr; } .footer__bottom { flex-direction: column; gap: 14px; } }
 </style>
