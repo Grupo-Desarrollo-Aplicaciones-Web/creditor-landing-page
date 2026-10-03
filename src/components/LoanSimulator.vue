@@ -1,24 +1,15 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useI18n } from '../i18n.js'
+import { estimateLoan } from '../lib/loan.js'
 
 const { t, money } = useI18n()
 
-const monto = ref(10000)
-const tasaAnual = ref(24)
-const meses = ref(12)
+const principal = ref(10000)
+const annualRate = ref(24)
+const months = ref(12)
 
-const tasaMensual = computed(() => tasaAnual.value / 100 / 12)
-
-const cuota = computed(() => {
-  const i = tasaMensual.value
-  const n = meses.value
-  if (i === 0) return monto.value / n
-  return (monto.value * i) / (1 - Math.pow(1 + i, -n))
-})
-
-const totalPagar = computed(() => cuota.value * meses.value)
-const totalInteres = computed(() => totalPagar.value - monto.value)
+const estimate = computed(() => estimateLoan(principal.value, annualRate.value, months.value))
 </script>
 
 <template>
@@ -36,35 +27,35 @@ const totalInteres = computed(() => totalPagar.value - monto.value)
       <div class="card simulator__card">
         <label class="field">
           <span class="field__label">{{ t('simulator.amount') }}</span>
-          <span class="field__value">{{ money(monto) }}</span>
-          <input v-model.number="monto" type="range" min="500" max="100000" step="500" />
+          <span class="field__value">{{ money(principal) }}</span>
+          <input v-model.number="principal" type="range" min="500" max="100000" step="500" :aria-valuetext="money(principal)" />
         </label>
 
         <label class="field">
           <span class="field__label">{{ t('simulator.rate') }}</span>
-          <span class="field__value">{{ tasaAnual }}%</span>
-          <input v-model.number="tasaAnual" type="range" min="0" max="80" step="0.5" />
+          <span class="field__value">{{ annualRate }}%</span>
+          <input v-model.number="annualRate" type="range" min="0" max="80" step="0.5" :aria-valuetext="annualRate + '%'" />
         </label>
 
         <label class="field">
           <span class="field__label">{{ t('simulator.term') }}</span>
-          <span class="field__value">{{ meses }} {{ t('simulator.months') }}</span>
-          <input v-model.number="meses" type="range" min="3" max="60" step="1" />
+          <span class="field__value">{{ months }} {{ t('simulator.months') }}</span>
+          <input v-model.number="months" type="range" min="3" max="60" step="1" :aria-valuetext="months + ' ' + t('simulator.months')" />
         </label>
 
-        <div class="result">
+        <div class="result" aria-live="polite" aria-atomic="true">
           <div class="result__main">
             <p class="result__label">{{ t('simulator.installment') }}</p>
-            <p class="result__amount">{{ money(cuota) }}</p>
+            <p class="result__amount">{{ money(estimate.installment) }}</p>
           </div>
           <div class="result__grid">
             <div>
               <p class="result__label">{{ t('simulator.total') }}</p>
-              <p class="result__sub">{{ money(totalPagar) }}</p>
+              <p class="result__sub">{{ money(estimate.total) }}</p>
             </div>
             <div>
               <p class="result__label">{{ t('simulator.interest') }}</p>
-              <p class="result__sub">{{ money(totalInteres) }}</p>
+              <p class="result__sub">{{ money(estimate.interest) }}</p>
             </div>
           </div>
         </div>
@@ -165,7 +156,7 @@ const totalInteres = computed(() => totalPagar.value - monto.value)
 
 .result__amount {
   margin-top: 4px;
-  font-size: 2rem;
+  font-size: clamp(1.35rem, 5.5vw, 2rem);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--brand-dark);
@@ -196,5 +187,11 @@ const totalInteres = computed(() => totalPagar.value - monto.value)
     grid-template-columns: 1fr;
     gap: 32px;
   }
+}
+
+@media (max-width: 480px) {
+  .simulator__card { padding: 18px; }
+  .result__grid { grid-template-columns: 1fr; }
+  .field { grid-template-columns: 1fr; }
 }
 </style>

@@ -20,7 +20,7 @@ const { t } = useI18n()
 <style scoped>
 .legal-page { max-width: 800px; padding-top: 48px; padding-bottom: 72px; }
 .legal-back, .legal-page a { color: var(--brand-dark); text-decoration: underline; }
-.legal-page h1 { margin: 28px 0 12px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; }
+.legal-page h1 { margin: 28px 0 12px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; scroll-margin-top: 100px; }
 .legal-date { color: var(--text-soft); }
 .legal-page section { margin: 32px 0; }
 .legal-page h2 { font-size: 1.3rem; margin-bottom: 12px; }

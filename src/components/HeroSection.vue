@@ -22,7 +22,7 @@ const obligations = computed(() => {
       <div class="hero__copy">
         <span class="eyebrow">{{ t('hero.eyebrow') }}</span>
         <h1 class="hero__title">
-          {{ t('hero.titleStart') }}<span>{{ t('hero.titleHighlight') }}</span>{{ t('hero.titleEnd') }}
+          {{ t('hero.titleStart') }}<span>{{ t('hero.titleHighlight') }}</span>
         </h1>
         <p class="hero__text">{{ t('hero.text') }}</p>
 
@@ -145,6 +145,7 @@ const obligations = computed(() => {
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .panel__label {
@@ -251,19 +252,9 @@ const obligations = computed(() => {
   padding: 3px 9px;
 }
 
-.chip--al-dia {
+.chip {
   color: #047857;
   background: #d1fae5;
-}
-
-.chip--pendiente {
-  color: #b45309;
-  background: #fef3c7;
-}
-
-.chip--vencido {
-  color: #b91c1c;
-  background: #fee2e2;
 }
 
 @media (max-width: 960px) {
@@ -271,5 +262,12 @@ const obligations = computed(() => {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+}
+
+@media (max-width: 480px) {
+  .panel { padding: 18px; }
+  .panel__list li { flex-direction: column; align-items: flex-start; }
+  .panel__right { text-align: left; }
+  .hero__actions .btn { width: 100%; }
 }
 </style>
