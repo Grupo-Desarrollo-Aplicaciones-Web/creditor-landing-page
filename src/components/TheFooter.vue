@@ -1,5 +1,6 @@
 <script setup>
 import { useI18n } from '../i18n.js'
+import { appLinks } from '../app-links.js'
 const { t } = useI18n()
 const year = new Date().getFullYear()
 </script>
@@ -22,6 +23,11 @@ const year = new Date().getFullYear()
         <a href="#/terms">{{ t('footer.terms') }}</a>
         <a href="#/privacy">{{ t('footer.privacy') }}</a>
       </nav>
+      <nav :aria-label="t('footer.application')">
+        <h2>{{ t('footer.application') }}</h2>
+        <a :href="appLinks.obligations">{{ t('footer.obligations') }}</a>
+        <a :href="appLinks.newPurchase">{{ t('footer.purchase') }}</a>
+      </nav>
     </div>
     <div class="container footer__bottom">
       <p>{{ t('footer.rights', { year }) }}</p>
@@ -32,7 +38,7 @@ const year = new Date().getFullYear()
 
 <style scoped>
 .footer { background: var(--bg); color: var(--text-invert); padding: 56px 0 28px; }
-.footer__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+.footer__grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 32px; }
 .brand { font-weight: 800; font-size: 1.25rem; }
 .footer p { margin-top: 16px; max-width: 420px; line-height: 1.6; color: #cbd5e1; }
 .footer nav h2 { font-size: .95rem; margin-bottom: 14px; }

@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from '../i18n.js'
+import { appLinks } from '../app-links.js'
 
 const { t, money } = useI18n()
 
@@ -26,8 +27,8 @@ const obligations = computed(() => {
         <p class="hero__text">{{ t('hero.text') }}</p>
 
         <div class="hero__actions">
-          <a class="btn btn--primary" href="#demo">{{ t('hero.ctaPrimary') }}</a>
-          <a class="btn btn--ghost" href="#como-funciona">{{ t('hero.ctaSecondary') }}</a>
+          <a class="btn btn--primary" :href="appLinks.obligations">{{ t('hero.ctaPrimary') }}</a>
+          <a class="btn btn--ghost" :href="appLinks.newPurchase">{{ t('hero.ctaSecondary') }}</a>
         </div>
 
         <ul class="hero__badges">
