@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { locales, useI18n } from '../i18n.js'
+import { appLinks } from '../app-links.js'
 
 const { t, locale, setLocale } = useI18n()
 
@@ -13,24 +14,37 @@ const links = computed(() => [
 
 const scrolled = ref(false)
 const menuOpen = ref(false)
+const menuButton = ref(null)
+const onKeydown = (event) => {
+  if (event.key === 'Escape' && menuOpen.value) {
+    menuOpen.value = false
+    menuButton.value?.focus()
+  }
+}
 
 const onScroll = () => {
   scrolled.value = window.scrollY > 12
 }
 
-onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
-onUnmounted(() => window.removeEventListener('scroll', onScroll))
+onMounted(() => {
+  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('keydown', onKeydown)
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('keydown', onKeydown)
+})
 </script>
 
 <template>
   <header class="header" :class="{ 'header--scrolled': scrolled }">
     <div class="container header__inner">
-      <a class="brand" href="#inicio">
+      <a class="brand" href="#inicio" :aria-label="t('nav.home')" @click="menuOpen = false">
         <span class="brand__mark" aria-hidden="true">C</span>
         <span class="brand__name">CREDITOR</span>
       </a>
 
-      <nav class="nav" :class="{ 'nav--open': menuOpen }">
+      <nav id="primary-navigation" class="nav" :class="{ 'nav--open': menuOpen }" :aria-label="t('nav.openMenu')">
         <a
           v-for="link in links"
           :key="link.href"
@@ -55,15 +69,17 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
               {{ item.label }}
             </button>
           </div>
-          <a class="btn btn--ghost" href="#login">{{ t('nav.login') }}</a>
+          <a class="btn btn--ghost" :href="appLinks.obligations">{{ t('nav.login') }}</a>
         </div>
       </nav>
 
       <button
         class="burger"
+        ref="menuButton"
         type="button"
         :aria-expanded="menuOpen"
-        :aria-label="t('nav.openMenu')"
+        :aria-label="t(menuOpen ? 'nav.closeMenu' : 'nav.openMenu')"
+        aria-controls="primary-navigation"
         @click="menuOpen = !menuOpen"
       >
         <span></span><span></span><span></span>

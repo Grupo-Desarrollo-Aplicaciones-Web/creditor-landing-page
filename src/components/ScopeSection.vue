@@ -1,5 +1,6 @@
 <script setup>
 import { useI18n } from '../i18n.js'
+import { appLinks } from '../app-links.js'
 const { t } = useI18n()
 </script>
 
@@ -15,12 +16,12 @@ const { t } = useI18n()
         <article class="card">
           <h3>{{ t('scope.owner') }}</h3>
           <p>{{ t('scope.ownerText') }}</p>
-          <a class="btn btn--primary" href="#inicio">{{ t('scope.ownerCta') }}</a>
+          <a class="btn btn--primary" :href="appLinks.obligations">{{ t('scope.ownerCta') }}</a>
         </article>
         <article class="card">
           <h3>{{ t('scope.admin') }}</h3>
           <p>{{ t('scope.adminText') }}</p>
-          <a class="btn btn--ghost" href="#inicio">{{ t('scope.adminCta') }}</a>
+          <a class="btn btn--ghost" :href="appLinks.newPurchase">{{ t('scope.adminCta') }}</a>
         </article>
       </div>
       <p class="scope__note">{{ t('scope.note') }}</p>

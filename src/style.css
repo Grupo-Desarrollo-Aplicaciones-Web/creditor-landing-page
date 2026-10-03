@@ -32,6 +32,21 @@ html {
   scroll-behavior: smooth;
 }
 
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid #b45309;
+  outline-offset: 4px;
+}
+
+section[id] { scroll-margin-top: 100px; }
+
+.skip-link { position: fixed; z-index: 100; top: -100px; left: 16px; padding: 14px; background: white; color: var(--text); box-shadow: var(--shadow); }
+.skip-link:focus { top: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
 body {
   margin: 0;
   min-width: 320px;
