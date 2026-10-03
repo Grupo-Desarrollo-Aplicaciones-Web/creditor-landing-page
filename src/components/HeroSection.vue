@@ -4,17 +4,15 @@ import { useI18n } from '../i18n.js'
 
 const { t, money } = useI18n()
 
-const cuotas = computed(() => {
+const obligations = computed(() => {
   const clients = t('hero.clients')
   return [
-    { cliente: clients[0], monto: money(1250), vence: t('hero.due.today'), estado: 'pendiente' },
-    { cliente: clients[1], monto: money(4800), vence: t('hero.due.days3'), estado: 'al-dia' },
-    { cliente: clients[2], monto: money(620), vence: t('hero.due.late5'), estado: 'vencido' }
+    { supplier: clients[0], amount: money(1250), due: t('hero.due.today'), status: 'pending' },
+    { supplier: clients[1], amount: money(4800), due: t('hero.due.days3'), status: 'onTime' },
+    { supplier: clients[2], amount: money(620), due: t('hero.due.late5'), status: 'pending' }
   ]
 })
 
-const statusLabel = (estado) =>
-  estado === 'al-dia' ? t('hero.status.onTime') : estado === 'pendiente' ? t('hero.status.pending') : t('hero.status.overdue')
 </script>
 
 <template>
@@ -42,39 +40,25 @@ const statusLabel = (estado) =>
           <div class="panel__head">
             <div>
               <p class="panel__label">{{ t('hero.portfolio') }}</p>
-              <p class="panel__value">{{ money(486230) }}</p>
+              <p class="panel__value">{{ money(6670) }}</p>
             </div>
             <span class="panel__tag">{{ t('hero.growth') }}</span>
           </div>
 
-          <div class="panel__stats">
-            <div>
-              <p class="panel__label">{{ t('hero.onTime') }}</p>
-              <p class="panel__stat panel__stat--ok">78%</p>
-            </div>
-            <div>
-              <p class="panel__label">{{ t('hero.dueSoon') }}</p>
-              <p class="panel__stat panel__stat--warn">14%</p>
-            </div>
-            <div>
-              <p class="panel__label">{{ t('hero.overdue') }}</p>
-              <p class="panel__stat panel__stat--bad">8%</p>
-            </div>
-          </div>
-
           <p class="panel__label panel__label--section">{{ t('hero.nextPayments') }}</p>
           <ul class="panel__list">
-            <li v-for="cuota in cuotas" :key="cuota.cliente">
+            <li v-for="obligation in obligations" :key="obligation.supplier">
               <div>
-                <p class="panel__client">{{ cuota.cliente }}</p>
-                <p class="panel__due">{{ t('hero.dueLabel') }} {{ cuota.vence }}</p>
+                <p class="panel__client">{{ obligation.supplier }}</p>
+                <p class="panel__due">{{ t('hero.dueLabel') }} {{ obligation.due }}</p>
               </div>
               <div class="panel__right">
-                <p class="panel__amount">{{ cuota.monto }}</p>
-                <span class="chip" :class="`chip--${cuota.estado}`">{{ statusLabel(cuota.estado) }}</span>
+                <p class="panel__amount">{{ obligation.amount }}</p>
+                <span class="chip">{{ t(`hero.status.${obligation.status}`) }}</span>
               </div>
             </li>
           </ul>
+          <p class="sample-note">{{ t('hero.sampleNote') }}</p>
         </div>
       </div>
     </div>
@@ -82,6 +66,7 @@ const statusLabel = (estado) =>
 </template>
 
 <style scoped>
+.sample-note { margin-top: 20px; font-size: .82rem; line-height: 1.5; color: var(--text-soft); }
 .hero {
   position: relative;
   overflow: hidden;

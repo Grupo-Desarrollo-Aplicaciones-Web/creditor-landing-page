@@ -20,7 +20,7 @@ const features = computed(() => t('features.items').map((item, index) => ({ ...i
 
       <div class="grid features">
         <article v-for="feature in features" :key="feature.title" class="card feature">
-          <span class="feature__icon">{{ feature.icon }}</span>
+          <span class="feature__icon" aria-hidden="true">{{ feature.icon }}</span>
           <h3 class="feature__title">{{ feature.title }}</h3>
           <p class="feature__text">{{ feature.text }}</p>
         </article>

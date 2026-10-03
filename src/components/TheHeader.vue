@@ -7,7 +7,7 @@ const { t, locale, setLocale } = useI18n()
 const links = computed(() => [
   { href: '#caracteristicas', label: t('nav.features') },
   { href: '#como-funciona', label: t('nav.how') },
-  { href: '#planes', label: t('nav.pricing') },
+  { href: '#scope', label: t('nav.scope') },
   { href: '#faq', label: t('nav.faq') }
 ])
 
@@ -26,8 +26,8 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   <header class="header" :class="{ 'header--scrolled': scrolled }">
     <div class="container header__inner">
       <a class="brand" href="#inicio">
-        <span class="brand__mark">CF</span>
-        <span class="brand__name">CreditFlow</span>
+        <span class="brand__mark" aria-hidden="true">C</span>
+        <span class="brand__name">CREDITOR</span>
       </a>
 
       <nav class="nav" :class="{ 'nav--open': menuOpen }">
@@ -56,7 +56,6 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
             </button>
           </div>
           <a class="btn btn--ghost" href="#login">{{ t('nav.login') }}</a>
-          <a class="btn btn--primary" href="#demo">{{ t('nav.trial') }}</a>
         </div>
       </nav>
 
