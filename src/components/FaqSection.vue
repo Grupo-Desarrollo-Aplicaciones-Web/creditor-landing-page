@@ -26,12 +26,14 @@ const toggle = (index) => {
             class="faq__q"
             type="button"
             :aria-expanded="open === index"
+            :aria-controls="'faq-answer-' + index"
+            :id="'faq-question-' + index"
             @click="toggle(index)"
           >
             <span>{{ faq.q }}</span>
-            <span class="faq__icon" :class="{ 'is-open': open === index }">+</span>
+            <span class="faq__icon" :class="{ 'is-open': open === index }" aria-hidden="true">+</span>
           </button>
-          <p v-show="open === index" class="faq__a">{{ faq.a }}</p>
+          <p v-show="open === index" :id="'faq-answer-' + index" role="region" :aria-labelledby="'faq-question-' + index" class="faq__a">{{ faq.a }}</p>
         </div>
       </div>
     </div>

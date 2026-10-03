@@ -67,7 +67,7 @@ export const messages = {
       legal: 'Read how this local demo handles data:', privacy: 'Privacy',
       required: 'Required', errorRequired: 'Enter a name.', errorEmail: 'Enter a valid email address.',
       successTitle: 'Example checked', successText: 'Nothing was sent or saved. Your entries have been cleared.',
-      reset: 'Clear fields', again: 'Try another example'
+      reset: 'Clear fields', again: 'Try another example', errorSummary: 'Review the indicated fields.', cleared: 'Fields cleared.'
     },
     footer: {
       text: 'A workspace for supplier obligations and payment records in small businesses.',
@@ -76,6 +76,23 @@ export const messages = {
       legal: 'Information', terms: 'Terms of this demo', privacy: 'Privacy',
       rights: '© {year} CREDITOR. Academic project.',
       note: 'Local version prepared for review; no publication or production service is implied.'
+    },
+    legal: {
+      back: 'Back to CREDITOR', updated: 'Local demo information · 03 October 2026',
+      terms: { title: 'Terms of this local demo', sections: [
+        { title: 'Academic demonstration', text: 'CREDITOR is an academic application increment prepared for local review. It is not a live lending, payment or financial advice service. The sample records are fictional.' },
+        { title: 'Use fictional information', text: 'Explore the interface with fictional data. No loan is offered, no payment is processed and no real account is opened through this landing.' },
+        { title: 'Linked application', text: 'The calls to action open the separately configured frontend. The local frontend must be running. Its demonstration storage is on the current device; it does not provide shared production persistence or authentication.' },
+        { title: 'Loan estimate', text: 'The optional estimate uses a fixed monthly installment and an effective annual rate. It excludes additional charges and does not constitute a quote.' },
+        { title: 'Availability of this version', text: 'These local changes have not been published. No uptime, financial outcome, commercial price or support commitment is offered.' }
+      ] },
+      privacy: { title: 'Privacy in this local demo', sections: [
+        { title: 'Contact example', text: 'The contact form validates entries in memory. It sends no network request and does not save them. Successful validation clears all entries; the Clear fields button clears them at any time. Leaving or reloading the page also discards them.' },
+        { title: 'Language preference', text: 'The landing saves only the selected language in this browser under creditor-locale in localStorage. If storage is unavailable, it still works. Clear that site storage in your browser to remove the preference.' },
+        { title: 'Loan estimate and preview', text: 'The slider values are held in memory and discarded when the page is reloaded. The preview contains fictional supplier names and amounts.' },
+        { title: 'Separate frontend', text: 'The linked local frontend stores its demonstration records on the current device and provides a demo-data reset action. Consult its Privacy page for the exact storage keys and reset behavior before entering information.' },
+        { title: 'Network and hosting', text: 'The landing bundles its own styles and uses system fonts. Loading it requests files from the server you run it on. Following a frontend link connects to the destination configured by the developer. A future public hosting provider may maintain access logs; no future deployment is implied by this page.' }
+      ] }
     },
     meta: {
       title: 'CREDITOR | Accounts payable for small businesses',
@@ -150,7 +167,7 @@ export const messages = {
       legal: 'Consulta cómo esta demo local trata los datos:', privacy: 'Privacidad',
       required: 'Obligatorio', errorRequired: 'Ingresa un nombre.', errorEmail: 'Ingresa un correo válido.',
       successTitle: 'Ejemplo comprobado', successText: 'No se envió ni guardó nada. Los campos se han borrado.',
-      reset: 'Borrar campos', again: 'Probar otro ejemplo'
+      reset: 'Borrar campos', again: 'Probar otro ejemplo', errorSummary: 'Revisa los campos indicados.', cleared: 'Campos borrados.'
     },
     footer: {
       text: 'Un espacio de trabajo para obligaciones con proveedores y abonos de mypes.',
@@ -159,6 +176,23 @@ export const messages = {
       legal: 'Información', terms: 'Términos de esta demo', privacy: 'Privacidad',
       rights: '© {year} CREDITOR. Proyecto académico.',
       note: 'Versión local preparada para revisión; no implica publicación ni servicio de producción.'
+    },
+    legal: {
+      back: 'Volver a CREDITOR', updated: 'Información de la demo local · 03 de octubre de 2026',
+      terms: { title: 'Términos de esta demo local', sections: [
+        { title: 'Demostración académica', text: 'CREDITOR es un incremento de aplicación académico preparado para revisión local. No es un servicio real de préstamos, pagos ni asesoría financiera. Los registros de ejemplo son ficticios.' },
+        { title: 'Usa información ficticia', text: 'Explora la interfaz con datos ficticios. Esta landing no ofrece préstamos, no procesa pagos ni abre cuentas reales.' },
+        { title: 'Aplicación vinculada', text: 'Los botones abren el frontend configurado por separado. El frontend local debe estar en ejecución. Su almacenamiento de demostración está en el dispositivo actual; no ofrece persistencia compartida ni autenticación de producción.' },
+        { title: 'Estimación de préstamo', text: 'La estimación opcional utiliza una cuota mensual fija y una tasa efectiva anual. Excluye cargos adicionales y no constituye una cotización.' },
+        { title: 'Disponibilidad de esta versión', text: 'Estos cambios locales no se han publicado. No se ofrece un compromiso de disponibilidad, resultados financieros, precios comerciales ni soporte.' }
+      ] },
+      privacy: { title: 'Privacidad en esta demo local', sections: [
+        { title: 'Ejemplo de contacto', text: 'El formulario valida los campos en memoria. No envía solicitudes de red ni los guarda. Al validar correctamente borra todas las entradas; el botón Borrar campos las elimina en cualquier momento. Salir o recargar la página también las descarta.' },
+        { title: 'Preferencia de idioma', text: 'La landing guarda únicamente el idioma seleccionado en este navegador con la clave creditor-locale de localStorage. Funciona aunque ese almacenamiento no esté disponible. Borra el almacenamiento de este sitio en el navegador para eliminar la preferencia.' },
+        { title: 'Estimación y vista previa', text: 'Los valores de los controles se mantienen en memoria y se descartan al recargar. La vista previa contiene nombres de proveedores e importes ficticios.' },
+        { title: 'Frontend separado', text: 'El frontend local vinculado guarda sus registros de demostración en el dispositivo actual y ofrece una acción para restablecer la demo. Consulta su página de Privacidad para conocer las claves y el comportamiento de restablecimiento antes de ingresar información.' },
+        { title: 'Red y alojamiento', text: 'La landing incluye sus estilos y utiliza fuentes del sistema. Cargarla solicita archivos al servidor donde la ejecutes. Abrir un enlace del frontend conecta con el destino configurado por el desarrollador. Un futuro proveedor público podría mantener registros de acceso; esta página no implica un despliegue futuro.' }
+      ] }
     },
     meta: {
       title: 'CREDITOR | Cuentas por pagar para mypes',
