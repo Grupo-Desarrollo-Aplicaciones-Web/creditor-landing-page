@@ -23,7 +23,7 @@ The production-format preview is local at `http://localhost:4173/creditor-landin
 
 ## Frontend configuration
 
-The default `VITE_APP_URL` is `http://localhost:5174`. Copy `.env.example` to an ignored `.env.local` only when you need a different destination, then restart Vite or rebuild.
+During development, the default `VITE_APP_URL` is `http://localhost:5174`. Production builds load the deployed application URL from `.env.production`. Copy `.env.example` to an ignored `.env.local` only when you need a different destination, then restart Vite or rebuild; that file also overrides production configuration.
 
 ```dotenv
 VITE_APP_URL=http://localhost:5174
@@ -34,7 +34,7 @@ VITE_APP_URL=http://localhost:5174
 | Business owner | Review obligations | `/#/dashboard` |
 | Finance administrator | Record a purchase | `/#/purchases/new` |
 
-The URL builder retains configured application subpaths, removes old query/hash values and rejects non-HTTP(S) URLs and embedded credentials. The variable is client-visible: never put secrets in it. No production frontend URL is claimed by this repository.
+The URL builder retains configured application subpaths, removes old query/hash values and rejects non-HTTP(S) URLs and embedded credentials. The variable is client-visible: never put secrets in it. The GitHub Pages application destination is configured in `.env.production`.
 
 ## Language, accessibility and currency
 
@@ -55,6 +55,6 @@ Navigation includes a skip link, visible keyboard focus, a mobile disclosure but
 
 `npm test` covers frontend destinations, form validation, language completeness/defaults and loan mathematics. `npm run check` runs tests and build. GitHub Actions contains **build/test checks only**, with read-only repository permission and no deployment job.
 
-The September 2026 deployment remains a **historical version**. These local TB1 changes were not pushed or deployed. See [historical evidence](docs/HISTORICAL_DEPLOYMENT.md) and the [local review record](docs/LOCAL_REVIEW.md).
+The September 2026 deployment remains a **historical version**. The 04 October deployment configuration hosts the current landing and browser demo together on GitHub Pages. Production builds use `.env.production`; development keeps its localhost default. See [deployment configuration](docs/DEPLOYMENT.md), [historical evidence](docs/HISTORICAL_DEPLOYMENT.md) and the [local review record](docs/LOCAL_REVIEW.md).
 
 [Contribution workflow](CONTRIBUTING.md)
