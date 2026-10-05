@@ -1,0 +1,13 @@
+{
+  "project": "CREDITOR",
+  "date": "2026-10-04",
+  "timezone": "America/Lima",
+  "landingUrl": "https://grupo-desarrollo-aplicaciones-web.github.io/creditor-landing-page/",
+  "appUrl": "https://grupo-desarrollo-aplicaciones-web.github.io/creditor-landing-page/app/",
+  "landingSource": "e26fddd97696c504703945a66a11b68ba4342704",
+  "appSource": "fd72446e5341dd7d8920763110fb41a3a1937c9e",
+  "landingTests": 12,
+  "appTests": 14,
+  "dataMode": "Browser localStorage demonstration",
+  "browserTests": 3
+}
